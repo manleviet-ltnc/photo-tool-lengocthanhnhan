@@ -33,9 +33,11 @@ namespace MyPhoto
 
         private void NewAlbum()
         {
-            //TODO: clean up, save existing album
-            Manager = new AlbumManager();
-            DisplayAlbum();
+            if (Manager == null || SaveAndCloseAlbum())
+            {
+                Manager = new AlbumManager();
+                DisplayAlbum();
+            }
         }
 
         private void DisplayAlbum()
@@ -150,11 +152,24 @@ namespace MyPhoto
             dlg.RestoreDirectory = true;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                //TODO: save any existing album
+                string path = dlg.FileName;
+                 
+                if (!SaveAndCloseAlbum())
+                    return;
 
-                //open the new album
-                //TODO: handle invalid album file
-                Manager = new AlbumManager(dlg.FileName);
+                try
+                {
+                    //open the new album
+                    Manager = new AlbumManager(path);
+                }
+
+                catch (AlbumStorageException aex)
+                {
+                    string msg = string.Format(" Unable to open album file {0}\n({1})",
+                                                   path, aex.Message);
+                    MessageBox.Show(msg, "Unable to Open");
+                    Manager = new AlbumManager();
+                }
                 DisplayAlbum();
             }
             dlg.Dispose();
@@ -162,7 +177,22 @@ namespace MyPhoto
 
         private void SaveAlbum(string name)
         {
-            Manager.Save(name, true);
+            try
+            {
+                Manager.Save(name, true);
+            }
+            catch (AlbumStorageException aex)
+            {
+                string msg = string.Format("Unable to save album {0} ({1})\n\n"
+                                                    + "Do you wish to save album"
+                                                    + "under a alternate name?",
+                                                    name, aex.Message);
+  DialogResult result = MessageBox.Show(msg, "Unable to save", MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Error, MessageBoxDefaultButton.Button2);
+
+   if(result == DialogResult.Yes)
+      SaveAsAlbum();
+            }
         }
 
         private void SaveAlbum()
@@ -194,6 +224,33 @@ namespace MyPhoto
             dlg.Dispose();
         }
 
+        private bool SaveAndCloseAlbum()
+        {
+            if (Manager.Album.HasChange)
+            {
+                string msg;
+                if (string.IsNullOrEmpty(Manager.FullName))
+                    msg = " Do you wish to save your changes?";
+                else
+                    msg = string.Format(" Do you wish to save your changes to \n{0}?", Manager.FullName);
+
+                DialogResult result = MessageBox.Show(this, msg, "Save changes?",
+                                                      MessageBoxButtons.YesNoCancel,
+                                                      MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    SaveAlbum();
+                else if (result == DialogResult.Cancel)
+                    return false;
+            }
+
+            if (Manager.Album != null)
+                Manager.Album.Dispose();
+
+            Manager = new AlbumManager();
+            SetTitleBar();
+            return true;
+        }
+
         private void mnuFileSave_Click(object sender, EventArgs e)
         {
             SaveAlbum();
@@ -203,6 +260,8 @@ namespace MyPhoto
         {
             SaveAsAlbum();
         }
+
+
 
         private void mnuEditAdd_Click(object sender, EventArgs e)
         {
@@ -270,6 +329,15 @@ namespace MyPhoto
         {
             mnuNext.Enabled = (Manager.Index < Manager.Album.Count - 1);
             mnuPrevious.Enabled = (Manager.Index > 0);
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+           
+            if (SaveAndCloseAlbum() == false)
+                e.Cancel = true;
+            else
+                e.Cancel = false;
+            base.OnFormClosing(e);
         }
 
     }

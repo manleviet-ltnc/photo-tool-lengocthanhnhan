@@ -103,6 +103,7 @@ namespace Manning.MyPhotoAlbum
             p.Caption = sr.ReadLine();
             p.DateTaken = DateTime.Parse(sr.ReadLine());
             p.Photographer = sr.ReadLine();
+            p.Notes = sr.ReadLine();
 
             return p;
         }
