@@ -43,6 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseEditDialog.Designer.cs">
+      <DependentUpon>BaseEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhotoEditDialog.Designer.cs">
+      <DependentUpon>PhotoEditDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PixelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +71,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BaseEditDialog.resx">
+      <DependentUpon>BaseEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhotoEditDialog.resx">
+      <DependentUpon>PhotoEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PixelDialog.resx">
       <DependentUpon>PixelDialog.cs</DependentUpon>
     </EmbeddedResource>

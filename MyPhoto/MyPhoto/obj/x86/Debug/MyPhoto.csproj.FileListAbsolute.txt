@@ -18,3 +18,5 @@ C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhoto\bin\De
 C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhoto\bin\Debug\MyPhotoAlbum.pdb
 C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhoto\bin\Debug\MyPhotoAlbum.dll
 C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhoto\bin\Debug\MyPhotoAlbum.pdb
+C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhoto\bin\Debug\MyPhotoControls.dll
+C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhoto\bin\Debug\MyPhotoControls.pdb

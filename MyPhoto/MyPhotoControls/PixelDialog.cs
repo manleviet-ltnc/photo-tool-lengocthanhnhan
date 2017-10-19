@@ -55,6 +55,7 @@ namespace Manning.MyPhotoControls
                 case PictureBoxSizeMode.StretchImage:
                     x = xPos * bmp.Width / displayRect.Width;
                     y = yPos * bmp.Height / displayRect.Height;
+                    break;
                 case PictureBoxSizeMode.Zoom:
                     Rectangle r2 = ImageUtility.ScaleToFit(bmp, displayRect);
 

@@ -81,6 +81,10 @@
       <Project>{382C2699-9EB5-4C97-AB3F-C3E65777AA4A}</Project>
       <Name>MyPhotoAlbum</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyPhotoControls\MyPhotoControls.csproj">
+      <Project>{6F8BC2F8-E722-43BC-8F3D-1C703EC1609E}</Project>
+      <Name>MyPhotoControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,3 +6,5 @@ C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnh
 C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoAlbum\bin\Debug\MyPhotoAlbum.pdb
 C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoAlbum\obj\Debug\MyPhotoAlbum.dll
 C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoAlbum\obj\Debug\MyPhotoAlbum.pdb
+C:\Users\Administrator.MRNC-GK1SVB1P2V\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoAlbum\obj\Debug\MyPhotoAlbum.csprojResolveAssemblyReference.cache
+C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoAlbum\obj\Debug\MyPhotoAlbum.csprojResolveAssemblyReference.cache
