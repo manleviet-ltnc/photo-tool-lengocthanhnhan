@@ -9,6 +9,32 @@ namespace Manning.MyPhotoAlbum
 {
     public class PhotoAlbum : Collection<Photograph>, IDisposable
     {
+        public enum DescriptorOption { FileName, Caption, DateTaken }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                HasChange = true;
+            }
+        }
+
+        private DescriptorOption _descriptor;
+        public DescriptorOption PhotoDescriptor
+        {
+            get { return _descriptor; }
+            set
+            {
+                _descriptor = value;
+                HasChange = true;
+            }
+        }
+
+       
+
         private bool _hasChange = false;
         public bool HasChange
         {
@@ -30,12 +56,24 @@ namespace Manning.MyPhotoAlbum
             }
         }
 
+        public PhotoAlbum()
+        {
+            ClearSettings();
+        }
+
         public Photograph Add(string filename)
         {
             Photograph p = new Photograph(filename);
             base.Add(p);
             return p;
         }
+
+        private void ClearSettings()
+        {
+            _title = null;
+            _descriptor = DescriptorOption.Caption;
+        }
+
 
         protected override void ClearItems()
         {
@@ -68,9 +106,29 @@ namespace Manning.MyPhotoAlbum
 
         public void Dispose()
         {
+            ClearSettings();
             foreach (Photograph p in this)
                 p.Dispose();
         }
-   
+
+        public string GetDescription(Photograph photo)
+        {
+            switch (PhotoDescriptor)
+            {
+                case DescriptorOption.Caption:
+                    return photo.Caption;
+                case DescriptorOption.DateTaken:
+                    return photo.DateTaken.ToShortDateString();
+                case DescriptorOption.FileName:
+                    return photo.FileName;
+            }
+            throw new ArgumentException("Unrecognized photo descriptor option.");
+        }
+
+        public string GetDescription(int index)
+        {
+            return GetDescription(this[index]);
+        }
+
     }
 }

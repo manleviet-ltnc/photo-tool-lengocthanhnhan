@@ -17,9 +17,28 @@ namespace Manning.MyPhotoAlbum
             set{_defaultPath=value;}
         }
 
+        private string _pwd;
+        public string Password
+        {
+            get { return _pwd; }
+            set
+            {
+                _pwd = value;
+            }
+        }
+
         static AlbumManager()
         {
             _defaultPath=Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Albums";
+        }
+
+        public AlbumManager(string name, string pwd) : this()
+        {
+            _name = name;
+            _album = AlbumStorage.ReadAlbum(name, pwd);
+            Password = pwd;
+            if (Album.Count > 0)
+                Index = 0;
         }
 
         private int _pos=-1;
@@ -105,7 +124,7 @@ namespace Manning.MyPhotoAlbum
         {
             if(FullName==null)
                throw new InvalidOperationException("Unable to save album with no name");
-            AlbumStorage.WriteAlbum( Album, FullName);
+            AlbumStorage.WriteAlbum( Album, FullName,Password);
         }
 
         public void Save(string name, bool overwrite)
@@ -115,7 +134,7 @@ namespace Manning.MyPhotoAlbum
             if(name!=FullName&&AlbumExits(name)&&!overwrite)
                 throw new ArgumentException("An album with this name exists");
 
-            AlbumStorage.WriteAlbum(Album,name);
+            AlbumStorage.WriteAlbum(Album,name,Password);
             FullName=name;
         }
 

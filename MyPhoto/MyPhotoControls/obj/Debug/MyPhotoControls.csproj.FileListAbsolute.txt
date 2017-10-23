@@ -18,3 +18,5 @@ C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoControl
 C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoControls\obj\Debug\MyPhotoControls.pdb
 C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoControls\obj\Debug\Manning.MyPhotoControls.BaseEditDialog.resources
 C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoControls\obj\Debug\Manning.MyPhotoControls.PhotoEditDialog.resources
+C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoControls\obj\Debug\Manning.MyPhotoControls.AlbumEditDialog.resources
+C:\Users\USER\Documents\GitHub\photo-tool-lengocthanhnhan\MyPhoto\MyPhotoControls\obj\Debug\Manning.MyPhotoControls.AlbumPasswordDialog.resources

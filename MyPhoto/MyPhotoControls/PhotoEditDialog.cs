@@ -127,6 +127,11 @@ namespace Manning.MyPhotoControls
                 e.Cancel = (result == DialogResult.Yes);
             }
         }
+
+        private void PhotoEditDialog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
         
