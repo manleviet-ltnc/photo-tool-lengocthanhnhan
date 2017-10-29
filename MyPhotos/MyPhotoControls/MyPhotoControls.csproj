@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD:MyPhotos/MyPhotoControls/MyPhotoControls.csproj
     <Compile Include="AlbumController.cs" />
+=======
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhotoControls/MyPhotoControls.csproj
     <Compile Include="AlbumEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>

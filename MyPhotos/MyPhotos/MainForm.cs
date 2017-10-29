@@ -159,13 +159,35 @@ namespace MyPhotos
             string password = null;
             if (AlbumController.OpenAlbumDialog(ref path, ref password))
             {
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
+=======
+                string path = dlg.FileName;
+                string pwd = null;
+
+                //Get password if encrypted
+                if (AlbumStorage.IsEncrypted(path))
+                {
+                    using (AlbumPasswordDialog pwdDlg = new AlbumPasswordDialog())
+                    {
+                        pwdDlg.Album = path;
+                        if (pwdDlg.ShowDialog() != DialogResult.OK)
+                            return; //Open cancelled
+                        pwd = pwdDlg.Password;
+                    }
+                }
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
                 if (!SaveAndCloseAlbum())
                     return;
 
                 try
                 {
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
                     // Open the new album
                     Manager = new AlbumManager(path, password);
+=======
+                    //open the new album
+                    Manager = new AlbumManager(path, pwd);
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
                 }
                 catch (AlbumStorageException aex)
                 {
@@ -314,7 +336,11 @@ namespace MyPhotos
         {
             mnuNext.Enabled = (Manager.Index < Manager.Album.Count - 1);
             mnuPrevious.Enabled = (Manager.Index > 0);
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
             mnuPhotoProps.Enabled = (Manager.Current != null);
+=======
+            mnuPhotoProps.Enabled = (Manager.current != null);
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
             mnuAlbumProps.Enabled = (Manager.Album != null);
         }
 
@@ -334,7 +360,13 @@ namespace MyPhotos
                 PixelForm = new PixelDialog();
                 PixelForm.Owner = this;
             }
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
             PixelForm.Show();
+=======
+
+            PixelForm.Show();
+
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
             Point p = pbxPhoto.PointToClient(Form.MousePosition);
             UpdatePixelDialog(p.X, p.Y);
         }
@@ -344,16 +376,26 @@ namespace MyPhotos
             if (PixelForm != null && PixelForm.Visible)
             {
                 Bitmap bmp = Manager.CurrentImage;
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
 
                 PixelForm.Text = (Manager.Current == null ? "Pixel Data" : Manager.Current.Caption);
+=======
+                PixelForm.Text = (Manager.current == null) ? "Pixel Data" : Manager.current.Caption;
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
 
                 if (bmp == null || !pbxPhoto.DisplayRectangle.Contains(x, y))
                     PixelForm.ClearPixelData();
                 else
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
                     PixelForm.UpdatePixelData(x, y, bmp,
                                               pbxPhoto.DisplayRectangle,
                                               new Rectangle(0, 0, bmp.Width, bmp.Height),
                                               pbxPhoto.SizeMode);
+=======
+                    PixelForm.UpdatePixelData(x, y, bmp, pbxPhoto.DisplayRectangle,
+                                                new Rectangle(0, 0, bmp.Width, bmp.Height),
+                                                pbxPhoto.SizeMode);
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
             }
         }
 
@@ -364,9 +406,14 @@ namespace MyPhotos
 
         private void mnuPhotoProps_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
             if (Manager.Current == null)
                 return;
 
+=======
+            if (Manager.current == null)
+                return;
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
             using (PhotoEditDialog dlg = new PhotoEditDialog(Manager))
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -385,6 +432,7 @@ namespace MyPhotos
                     DisplayAlbum();
             }
         }
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
 
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
@@ -402,6 +450,25 @@ namespace MyPhotos
             base.OnKeyPress(e);
         }
 
+=======
+
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '+':
+                    mnuNext.PerformClick();
+                    e.Handled = true;
+                    break;
+                case '-':
+                    mnuPrevious.PerformClick();
+                    e.Handled = true;
+                    break;
+            }
+            base.OnKeyPress(e);
+        }
+
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs
         protected override void OnKeyDown(KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -436,4 +503,8 @@ namespace MyPhotos
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
+<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.cs
 }
+=======
+ }
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.cs

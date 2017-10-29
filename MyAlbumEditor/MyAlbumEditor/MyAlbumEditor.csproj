@@ -81,8 +81,13 @@
       <Project>{BA28F54E-5817-4900-A0D6-621702D8E6C9}</Project>
       <Name>MyPhotoAlbum</Name>
     </ProjectReference>
+<<<<<<< HEAD:MyAlbumEditor/MyAlbumEditor/MyAlbumEditor.csproj
     <ProjectReference Include="..\..\MyPhotos\MyPhotoControls\MyPhotoControls.csproj">
       <Project>{ABE505EF-7036-49D3-AD12-F0C44552FFD5}</Project>
+=======
+    <ProjectReference Include="..\MyPhotoControls\MyPhotoControls.csproj">
+      <Project>{6F8BC2F8-E722-43BC-8F3D-1C703EC1609E}</Project>
+>>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MyPhoto.csproj
       <Name>MyPhotoControls</Name>
     </ProjectReference>
   </ItemGroup>
