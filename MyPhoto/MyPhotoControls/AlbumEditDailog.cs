@@ -7,9 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using Manning.MyPhotoAlbum;
 
+
 namespace Manning.MyPhotoControls
 {
-    public partial class AlbumEditDialog : Manning.MyPhotoControls.BaseEditDialog
+    public partial class AlbumEditDailog : Manning.MyPhotoControls.BaseEditDialog
     {
         private AlbumManager _manager;
         private AlbumManager Manager
@@ -17,7 +18,8 @@ namespace Manning.MyPhotoControls
             get { return _manager; }
         }
 
-        public AlbumEditDialog(AlbumManager mgr)
+
+        public AlbumEditDailog(AlbumManager mgr)
         {
             if (mgr == null)
                 throw new ArgumentException("AlbumManager cannot be null");
@@ -37,7 +39,7 @@ namespace Manning.MyPhotoControls
 
             //if enable, assign focus
             if (enabled)
-               txtPassword.Focus();
+                txtPassword.Focus();
         }
 
         protected override void ResetDialog()
@@ -67,12 +69,13 @@ namespace Manning.MyPhotoControls
             cbxPassword.Checked = (pwd != null && pwd.Length > 0);
             txtPassword.Text = pwd;
             txtConfirm.Text = pwd;
-        }
 
+        }
         private bool ValidPassword()
         {
             if (cbxPassword.Checked)
-                return (txtPassword.TextLength > 0 && txtConfirm.Text == txtPassword.Text);
+                return (txtPassword.TextLength > 0 &&
+                    txtConfirm.Text == txtPassword.Text);
             else
                 return true;
         }
@@ -84,19 +87,21 @@ namespace Manning.MyPhotoControls
                 if (!ValidPassword())
                 {
                     DialogResult result = MessageBox.Show("The current password is blank"
-                                                        + "or the two password entries"
-                                                        + "do not match.",
-                                                          "Invalid Password",
-                                                          MessageBoxButtons.OK,
-                                                          MessageBoxIcon.Information);
+                                                           + "or the two password entries" +
+                                                           "do not match.",
+                                                           "Invalid Password",
+                                                           MessageBoxButtons.OK,
+                                                           MessageBoxIcon.Information);
+
                     e.Cancel = true;
                 }
+
                 if (!e.Cancel)
-                    SaveSettings();
+                    SaveSetting();
             }
         }
 
-        private void SaveSettings()
+        private void SaveSetting()
         {
             PhotoAlbum album = Manager.Album;
             if (album != null)
@@ -119,7 +124,7 @@ namespace Manning.MyPhotoControls
 
         private void txtTitle_TextChanged(object sender, EventArgs e)
         {
-            Text = txtTitle.Text + "-Album Properties";
+            Text = txtTitle.Text + " - Album Properties";
         }
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)

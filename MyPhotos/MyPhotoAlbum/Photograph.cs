@@ -11,7 +11,7 @@ namespace Manning.MyPhotoAlbum
     /// The photograph class represents a photographic
     /// image stored in the file system
     /// </summary>
-    public class Photograph : IDisposable,IFormattable
+    public class Photograph : IDisposable, IFormattable
     {
         private string _fileName;
         public string FileName
@@ -122,7 +122,7 @@ namespace Manning.MyPhotoAlbum
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            if (string.IsNullOrEmpty(format))
+            if (String.IsNullOrEmpty(format))
                 format = "f";
 
             char first = format.ToLower()[0];

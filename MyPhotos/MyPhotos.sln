@@ -1,13 +1,13 @@
 
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhotos", "MyPhotos\MyPhotos.csproj", "{E9373780-A424-402E-85B3-FC48FFA8F414}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhotoAlbum", "MyPhotoAlbum\MyPhotoAlbum.csproj", "{BA28F54E-5817-4900-A0D6-621702D8E6C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhotoControls", "MyPhotoControls\MyPhotoControls.csproj", "{ABE505EF-7036-49D3-AD12-F0C44552FFD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhotos", "MyPhotos\MyPhotos.csproj", "{E9373780-A424-402E-85B3-FC48FFA8F414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E9373780-A424-402E-85B3-FC48FFA8F414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9373780-A424-402E-85B3-FC48FFA8F414}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9373780-A424-402E-85B3-FC48FFA8F414}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9373780-A424-402E-85B3-FC48FFA8F414}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA28F54E-5817-4900-A0D6-621702D8E6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA28F54E-5817-4900-A0D6-621702D8E6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA28F54E-5817-4900-A0D6-621702D8E6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{ABE505EF-7036-49D3-AD12-F0C44552FFD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE505EF-7036-49D3-AD12-F0C44552FFD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABE505EF-7036-49D3-AD12-F0C44552FFD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9373780-A424-402E-85B3-FC48FFA8F414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9373780-A424-402E-85B3-FC48FFA8F414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9373780-A424-402E-85B3-FC48FFA8F414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9373780-A424-402E-85B3-FC48FFA8F414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

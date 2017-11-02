@@ -2,9 +2,10 @@
 using System.IO;
 using System.Text;
 
+
 namespace Manning.MyPhotoAlbum
 {
-    class CryptoReader:StreamReader
+    class CryptoReader : StreamReader
     {
         private CryptoTextBase _base;
         private CryptoTextBase CryptoBase
@@ -12,7 +13,7 @@ namespace Manning.MyPhotoAlbum
             get { return _base; }
         }
 
-        public CryptoReader(string path, string password): base(path)
+        public CryptoReader(string path, string password) : base(path)
         {
             if (path == null || path.Length == 0)
                 throw new ArgumentNullException("path");
@@ -29,8 +30,8 @@ namespace Manning.MyPhotoAlbum
                 return encrypted;
             else
                 return CryptoBase.ProcessText(encrypted, false);
-        }
 
+        }
         public string ReadUnencryptedLine()
         {
             return base.ReadLine();

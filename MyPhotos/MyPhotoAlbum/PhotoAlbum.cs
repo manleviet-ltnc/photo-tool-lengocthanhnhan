@@ -22,6 +22,17 @@ namespace Manning.MyPhotoAlbum
             }
         }
 
+        private DescriptorOption _descriptor;
+        public DescriptorOption PhotoDescriptor
+        {
+            get { return _descriptor; }
+            set
+            {
+                _descriptor = value;
+                HasChanged = true;
+            }
+        }
+
         public string GetDescriptorFormat()
         {
             switch (PhotoDescriptor)
@@ -31,17 +42,6 @@ namespace Manning.MyPhotoAlbum
                 case DescriptorOption.FileName:
                 default:
                     return "f";
-            }
-        }
-
-        private DescriptorOption _descriptor;
-        public DescriptorOption PhotoDescriptor
-        {
-            get { return _descriptor; }
-            set
-            {
-                _descriptor = value;
-                HasChanged = true;
             }
         }
 

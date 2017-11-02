@@ -1,21 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E9EF6605-2F61-41AC-B5B1-24F89930A67D}</ProjectGuid>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9940318-E410-42C5-88C3-26CDE3A23422}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyAlbumEditor</RootNamespace>
     <AssemblyName>MyAlbumEditor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,8 +21,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,6 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumCalendar.Designer.cs">
+      <DependentUpon>AlbumCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlbumImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumImage.Designer.cs">
+      <DependentUpon>AlbumImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +63,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkerProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerProgressDialog.Designer.cs">
+      <DependentUpon>WorkerProgressDialog.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AlbumCalendar.resx">
+      <DependentUpon>AlbumCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlbumImage.resx">
+      <DependentUpon>AlbumImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditorForm.resx">
       <DependentUpon>EditorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WorkerProgressDialog.resx">
+      <DependentUpon>WorkerProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,25 +102,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MyPhotos\MyPhotoAlbum\MyPhotoAlbum.csproj">
-      <Project>{BA28F54E-5817-4900-A0D6-621702D8E6C9}</Project>
+      <Project>{ba28f54e-5817-4900-a0d6-621702d8e6c9}</Project>
       <Name>MyPhotoAlbum</Name>
     </ProjectReference>
-<<<<<<< HEAD:MyAlbumEditor/MyAlbumEditor/MyAlbumEditor.csproj
     <ProjectReference Include="..\..\MyPhotos\MyPhotoControls\MyPhotoControls.csproj">
-      <Project>{ABE505EF-7036-49D3-AD12-F0C44552FFD5}</Project>
-=======
-    <ProjectReference Include="..\MyPhotoControls\MyPhotoControls.csproj">
-      <Project>{6F8BC2F8-E722-43BC-8F3D-1C703EC1609E}</Project>
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MyPhoto.csproj
+      <Project>{abe505ef-7036-49d3-ad12-f0c44552ffd5}</Project>
       <Name>MyPhotoControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

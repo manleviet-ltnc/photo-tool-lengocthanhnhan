@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Manning.MyPhotoControls
@@ -16,7 +17,6 @@ namespace Manning.MyPhotoControls
             get { return txtAlbum.Text; }
             set { txtAlbum.Text = value; }
         }
-
         public string Password
         {
             get { return txtPassword.Text; }
@@ -26,7 +26,8 @@ namespace Manning.MyPhotoControls
         public AlbumPasswordDialog()
         {
             InitializeComponent();
-            //Define dialog results for link lables
+
+            // Define Dialog results for link lables
             IButtonControl btn = (IButtonControl)lnkOK;
             btn.DialogResult = DialogResult.OK;
             btn = (IButtonControl)lnkCancel;
@@ -42,5 +43,6 @@ namespace Manning.MyPhotoControls
                 Close();
             }
         }
-    }  
+
+    }
 }

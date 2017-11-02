@@ -41,12 +41,8 @@
             this.mnuPrevious = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPixelData = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-=======
             this.mnuPhotoProps = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAlbumProps = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,18 +62,13 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sttInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.sttImageSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.sttAlbumPos = new System.Windows.Forms.ToolStripStatusLabel();
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-            this.mnuPhotoProps = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAlbumProps = new System.Windows.Forms.ToolStripMenuItem();
-=======
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
-            this.flybyProvider = new Manning.MyPhotoControls.FlybyTextProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoto)).BeginInit();
             this.ctxMenuPhoto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -109,6 +100,7 @@
             this.mnuPhotoProps,
             this.mnuAlbumProps});
             this.ctxMenuPhoto.Name = "ctxMenuPhoto";
+            this.ctxMenuPhoto.OwnerItem = this.mnuView;
             this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 148);
             this.ctxMenuPhoto.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuPhoto_Opening);
             // 
@@ -118,7 +110,6 @@
             this.mnuImageScale,
             this.mnuImageStretch,
             this.mnuImageActual});
-            this.flybyProvider.SetFlybyText(this.mnuImage, null);
             this.mnuImage.Name = "mnuImage";
             this.mnuImage.Size = new System.Drawing.Size(192, 22);
             this.mnuImage.Text = "&Image";
@@ -129,25 +120,22 @@
             // 
             this.mnuImageScale.Checked = true;
             this.mnuImageScale.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.flybyProvider.SetFlybyText(this.mnuImageScale, null);
             this.mnuImageScale.Name = "mnuImageScale";
-            this.mnuImageScale.Size = new System.Drawing.Size(152, 22);
+            this.mnuImageScale.Size = new System.Drawing.Size(141, 22);
             this.mnuImageScale.Tag = "Zoom";
             this.mnuImageScale.Text = "&Scale to Fit";
             // 
             // mnuImageStretch
             // 
-            this.flybyProvider.SetFlybyText(this.mnuImageStretch, null);
             this.mnuImageStretch.Name = "mnuImageStretch";
-            this.mnuImageStretch.Size = new System.Drawing.Size(152, 22);
+            this.mnuImageStretch.Size = new System.Drawing.Size(141, 22);
             this.mnuImageStretch.Tag = "StretchImage";
             this.mnuImageStretch.Text = "S&tretch to Fit";
             // 
             // mnuImageActual
             // 
-            this.flybyProvider.SetFlybyText(this.mnuImageActual, null);
             this.mnuImageActual.Name = "mnuImageActual";
-            this.mnuImageActual.Size = new System.Drawing.Size(152, 22);
+            this.mnuImageActual.Size = new System.Drawing.Size(141, 22);
             this.mnuImageActual.Tag = "Normal";
             this.mnuImageActual.Text = "&Actual Size";
             // 
@@ -158,7 +146,6 @@
             // 
             // mnuNext
             // 
-            this.flybyProvider.SetFlybyText(this.mnuNext, null);
             this.mnuNext.Name = "mnuNext";
             this.mnuNext.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.N)));
@@ -168,7 +155,6 @@
             // 
             // mnuPrevious
             // 
-            this.flybyProvider.SetFlybyText(this.mnuPrevious, null);
             this.mnuPrevious.Name = "mnuPrevious";
             this.mnuPrevious.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
@@ -183,17 +169,13 @@
             // 
             // mnuPixelData
             // 
-            this.flybyProvider.SetFlybyText(this.mnuPixelData, null);
             this.mnuPixelData.Name = "mnuPixelData";
             this.mnuPixelData.Size = new System.Drawing.Size(192, 22);
             this.mnuPixelData.Text = "Pi&xel Data...";
             this.mnuPixelData.Click += new System.EventHandler(this.mnuPixelData_Click);
             // 
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-=======
             // mnuPhotoProps
             // 
-            this.flybyProvider.SetFlybyText(this.mnuPhotoProps, null);
             this.mnuPhotoProps.Name = "mnuPhotoProps";
             this.mnuPhotoProps.Size = new System.Drawing.Size(192, 22);
             this.mnuPhotoProps.Text = "Phot&o Properties...";
@@ -201,21 +183,11 @@
             // 
             // mnuAlbumProps
             // 
-            this.flybyProvider.SetFlybyText(this.mnuAlbumProps, null);
             this.mnuAlbumProps.Name = "mnuAlbumProps";
             this.mnuAlbumProps.Size = new System.Drawing.Size(192, 22);
             this.mnuAlbumProps.Text = "Albu&m Properties...";
             this.mnuAlbumProps.Click += new System.EventHandler(this.mnuAlbumProps_Click);
             // 
-            // mnuView
-            // 
-            this.mnuView.DropDown = this.ctxMenuPhoto;
-            this.flybyProvider.SetFlybyText(this.mnuView, "The view menu");
-            this.mnuView.Name = "mnuView";
-            this.mnuView.Size = new System.Drawing.Size(44, 20);
-            this.mnuView.Text = "&View";
-            // 
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -241,38 +213,23 @@
             this.mnuFilePrint,
             this.mnuFilePrintPreview,
             this.toolStripSeparator3,
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
             this.mnuFileExit});
-=======
-            this.mnuFilrExit});
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
-            this.flybyProvider.SetFlybyText(this.mnuFile, "The File menu");
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
             // 
             // mnuFileNew
             // 
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-            this.flybyProvider.SetFlybyText(this.mnuFileNew, null);
-=======
-            this.flybyProvider.SetFlybyText(this.mnuFileNew, "New album");
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             this.mnuFileNew.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileNew.Image")));
             this.mnuFileNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuFileNew.Name = "mnuFileNew";
             this.mnuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mnuFileNew.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileNew.Size = new System.Drawing.Size(146, 22);
             this.mnuFileNew.Text = "&New";
             this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
             // 
             // mnuFileOpen
             // 
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-            this.flybyProvider.SetFlybyText(this.mnuFileOpen, null);
-=======
-            this.flybyProvider.SetFlybyText(this.mnuFileOpen, "Open the current album");
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             this.mnuFileOpen.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileOpen.Image")));
             this.mnuFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuFileOpen.Name = "mnuFileOpen";
@@ -288,18 +245,16 @@
             // 
             // mnuFileSave
             // 
-            this.flybyProvider.SetFlybyText(this.mnuFileSave, "Save the current album");
             this.mnuFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileSave.Image")));
             this.mnuFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuFileSave.Name = "mnuFileSave";
             this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mnuFileSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSave.Size = new System.Drawing.Size(146, 22);
             this.mnuFileSave.Text = "&Save";
             this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
             // 
             // mnuFileSaveAs
             // 
-            this.flybyProvider.SetFlybyText(this.mnuFileSaveAs, null);
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
             this.mnuFileSaveAs.Size = new System.Drawing.Size(146, 22);
             this.mnuFileSaveAs.Text = "Save &As";
@@ -312,7 +267,6 @@
             // 
             // mnuFilePrint
             // 
-            this.flybyProvider.SetFlybyText(this.mnuFilePrint, null);
             this.mnuFilePrint.Image = ((System.Drawing.Image)(resources.GetObject("mnuFilePrint.Image")));
             this.mnuFilePrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuFilePrint.Name = "mnuFilePrint";
@@ -322,7 +276,6 @@
             // 
             // mnuFilePrintPreview
             // 
-            this.flybyProvider.SetFlybyText(this.mnuFilePrintPreview, null);
             this.mnuFilePrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("mnuFilePrintPreview.Image")));
             this.mnuFilePrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuFilePrintPreview.Name = "mnuFilePrintPreview";
@@ -336,19 +289,10 @@
             // 
             // mnuFileExit
             // 
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-            this.flybyProvider.SetFlybyText(this.mnuFileExit, null);
             this.mnuFileExit.Name = "mnuFileExit";
             this.mnuFileExit.Size = new System.Drawing.Size(146, 22);
             this.mnuFileExit.Text = "E&xit";
             this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
-=======
-            this.flybyProvider.SetFlybyText(this.mnuFilrExit, null);
-            this.mnuFilrExit.Name = "mnuFilrExit";
-            this.mnuFilrExit.Size = new System.Drawing.Size(152, 22);
-            this.mnuFilrExit.Text = "E&xit";
-            this.mnuFilrExit.Click += new System.EventHandler(this.mnuFileExit_Click);
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             // 
             // mnuEdit
             // 
@@ -359,18 +303,12 @@
             this.toolStripSeparator5,
             this.mnuEditAdd,
             this.mnuEditRemove});
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-            this.flybyProvider.SetFlybyText(this.mnuEdit, null);
-=======
-            this.flybyProvider.SetFlybyText(this.mnuEdit, "The Edit menu");
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             this.mnuEdit.Name = "mnuEdit";
             this.mnuEdit.Size = new System.Drawing.Size(39, 20);
             this.mnuEdit.Text = "&Edit";
             // 
             // mnuEditCut
             // 
-            this.flybyProvider.SetFlybyText(this.mnuEditCut, null);
             this.mnuEditCut.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditCut.Image")));
             this.mnuEditCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuEditCut.Name = "mnuEditCut";
@@ -380,7 +318,6 @@
             // 
             // mnuEditCopy
             // 
-            this.flybyProvider.SetFlybyText(this.mnuEditCopy, null);
             this.mnuEditCopy.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditCopy.Image")));
             this.mnuEditCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuEditCopy.Name = "mnuEditCopy";
@@ -390,7 +327,6 @@
             // 
             // mnuEditPaste
             // 
-            this.flybyProvider.SetFlybyText(this.mnuEditPaste, null);
             this.mnuEditPaste.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditPaste.Image")));
             this.mnuEditPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuEditPaste.Name = "mnuEditPaste";
@@ -405,7 +341,6 @@
             // 
             // mnuEditAdd
             // 
-            this.flybyProvider.SetFlybyText(this.mnuEditAdd, null);
             this.mnuEditAdd.Name = "mnuEditAdd";
             this.mnuEditAdd.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
@@ -415,7 +350,6 @@
             // 
             // mnuEditRemove
             // 
-            this.flybyProvider.SetFlybyText(this.mnuEditRemove, null);
             this.mnuEditRemove.Name = "mnuEditRemove";
             this.mnuEditRemove.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
@@ -423,35 +357,25 @@
             this.mnuEditRemove.Text = "Remo&ve";
             this.mnuEditRemove.Click += new System.EventHandler(this.mnuEditRemove_Click);
             // 
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
             // mnuView
             // 
             this.mnuView.DropDown = this.ctxMenuPhoto;
-            this.flybyProvider.SetFlybyText(this.mnuView, null);
             this.mnuView.Name = "mnuView";
             this.mnuView.Size = new System.Drawing.Size(44, 20);
             this.mnuView.Text = "&View";
             // 
-=======
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuHelpAbout});
-<<<<<<< HEAD:MyPhotos/MyPhotos/MainForm.Designer.cs
-            this.flybyProvider.SetFlybyText(this.mnuHelp, null);
-=======
-            this.flybyProvider.SetFlybyText(this.mnuHelp, "The help menu");
->>>>>>> aba784dc56b19fd10e94bae5c031bb5726376c32:MyPhoto/MyPhoto/MainForm.Designer.cs
             this.mnuHelp.Name = "mnuHelp";
             this.mnuHelp.Size = new System.Drawing.Size(44, 20);
             this.mnuHelp.Text = "&Help";
             // 
             // mnuHelpAbout
             // 
-            this.flybyProvider.SetFlybyText(this.mnuHelpAbout, null);
             this.mnuHelpAbout.Name = "mnuHelpAbout";
-            this.mnuHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this.mnuHelpAbout.Size = new System.Drawing.Size(116, 22);
             this.mnuHelpAbout.Text = "&About...";
             // 
             // statusStrip1
@@ -495,30 +419,6 @@
             this.sttAlbumPos.Size = new System.Drawing.Size(37, 19);
             this.sttAlbumPos.Text = "1 / 1 ";
             // 
-            // mnuPhotoProps
-            // 
-            this.flybyProvider.SetFlybyText(this.mnuPhotoProps, null);
-            this.mnuPhotoProps.Name = "mnuPhotoProps";
-            this.mnuPhotoProps.Size = new System.Drawing.Size(192, 22);
-            this.mnuPhotoProps.Text = "Phot&o Properties...";
-            this.mnuPhotoProps.Click += new System.EventHandler(this.mnuPhotoProps_Click);
-            // 
-            // mnuAlbumProps
-            // 
-            this.flybyProvider.SetFlybyText(this.mnuAlbumProps, null);
-            this.mnuAlbumProps.Name = "mnuAlbumProps";
-            this.mnuAlbumProps.Size = new System.Drawing.Size(192, 22);
-            this.mnuAlbumProps.Text = "Albu&m Properties...";
-            this.mnuAlbumProps.Click += new System.EventHandler(this.mnuAlbumProps_Click);
-            // 
-            // flybyProvider
-            // 
-            this.flybyProvider.StatusLabel = this.sttInfo;
-            // 
-            // flybyProvider
-            // 
-            this.flybyProvider.StatusLable = this.sttInfo;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,6 +431,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MyPhotos";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoto)).EndInit();
             this.ctxMenuPhoto.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

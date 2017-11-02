@@ -39,7 +39,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(15, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 45);
+            this.label2.Location = new System.Drawing.Point(15, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 1;
@@ -56,24 +56,24 @@
             // 
             // txtAlbum
             // 
-            this.txtAlbum.Location = new System.Drawing.Point(78, 6);
+            this.txtAlbum.Location = new System.Drawing.Point(89, 10);
             this.txtAlbum.Name = "txtAlbum";
             this.txtAlbum.ReadOnly = true;
-            this.txtAlbum.Size = new System.Drawing.Size(189, 20);
+            this.txtAlbum.Size = new System.Drawing.Size(168, 20);
             this.txtAlbum.TabIndex = 2;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(78, 38);
+            this.txtPassword.Location = new System.Drawing.Point(89, 36);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(189, 20);
+            this.txtPassword.Size = new System.Drawing.Size(168, 20);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lnkOK
             // 
             this.lnkOK.AutoSize = true;
-            this.lnkOK.Location = new System.Drawing.Point(13, 85);
+            this.lnkOK.Location = new System.Drawing.Point(12, 76);
             this.lnkOK.Name = "lnkOK";
             this.lnkOK.Size = new System.Drawing.Size(22, 13);
             this.lnkOK.TabIndex = 4;
@@ -84,7 +84,7 @@
             // lnkCancel
             // 
             this.lnkCancel.AutoSize = true;
-            this.lnkCancel.Location = new System.Drawing.Point(227, 85);
+            this.lnkCancel.Location = new System.Drawing.Point(202, 76);
             this.lnkCancel.Name = "lnkCancel";
             this.lnkCancel.Size = new System.Drawing.Size(40, 13);
             this.lnkCancel.TabIndex = 5;
@@ -98,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.lnkCancel;
-            this.ClientSize = new System.Drawing.Size(279, 107);
+            this.ClientSize = new System.Drawing.Size(269, 98);
             this.ControlBox = false;
             this.Controls.Add(this.lnkCancel);
             this.Controls.Add(this.lnkOK);

@@ -14,12 +14,16 @@ namespace MyAlbumEditor
 {
     public partial class EditorForm : Form
     {
+
+        private static readonly Rectangle DrawRect = new Rectangle(0, 0, 45, 45);
+
         private AlbumManager _manager;
         private AlbumManager Manager
         {
             get { return _manager; }
             set { _manager = value; }
         }
+
         public EditorForm()
         {
             InitializeComponent();
@@ -65,12 +69,12 @@ namespace MyAlbumEditor
 
         private void OpenAlbum(string path)
         {
-          
             string password = null;
-            if (path != null && path.Length > 0 && AlbumController.CheckAlbumPassword(path, ref password))
+            if (path != null && path.Length > 0
+               && AlbumController.CheckAlbumPassword(path, ref password))
             {
                 if (CloseAlbum())
-                    return;
+                    return; // cancel open
 
                 try
                 {
@@ -81,8 +85,7 @@ namespace MyAlbumEditor
                     Manager = null;
                 }
             }
-
-            DisplayAlbum();
+            UpdateTabs();
             EnablePhotoButtons();
         }
 
@@ -90,17 +93,11 @@ namespace MyAlbumEditor
         {
             if (Manager == null)
             {
-                grpPhotos.Enabled = false;
-                btnAlbumProps.Enabled = false;
-                Text = " The selected album could be not opened";
                 lstPhotos.BackColor = SystemColors.Control;
                 lstPhotos.Items.Clear();
             }
             else
             {
-                grpPhotos.Enabled = true;
-                btnAlbumProps.Enabled = true;
-                Text = " Album" + Manager.ShortName;
                 lstPhotos.BackColor = SystemColors.Window;
 
                 lstPhotos.FormatString = Manager.Album.GetDescriptorFormat();
@@ -110,9 +107,8 @@ namespace MyAlbumEditor
                 lstPhotos.BeginUpdate();
                 lstPhotos.Items.Clear();
                 foreach (Photograph p in Manager.Album)
-                    lstPhotos.Items.Add(p); 
+                    lstPhotos.Items.Add(p);
                 lstPhotos.EndUpdate();
-
             }
         }
 
@@ -120,6 +116,7 @@ namespace MyAlbumEditor
         {
             if (Manager == null)
                 return;
+
             using (AlbumEditDialog dlg = new AlbumEditDialog(Manager))
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -138,8 +135,6 @@ namespace MyAlbumEditor
                 if (dlg.ShowDialog() == DialogResult.OK)
                     DisplayAlbum();
             }
-
-
         }
 
         private void lstPhotos_DoubleClick(object sender, EventArgs e)
@@ -149,7 +144,7 @@ namespace MyAlbumEditor
 
         private void lstPhotos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EnablePhotoButtons();
+            lstPhotos.EndUpdate();
         }
 
         private void EnablePhotoButtons()
@@ -161,7 +156,7 @@ namespace MyAlbumEditor
             {
                 bool firstSelected = lstPhotos.GetSelected(0);
                 bool lastSelected = lstPhotos.GetSelected(lstPhotos.Items.Count - 1);
-
+                
                 btnMoveUp.Enabled = !firstSelected;
                 btnMoveDown.Enabled = !lastSelected;
             }
@@ -203,7 +198,8 @@ namespace MyAlbumEditor
             int count = indices.Count;
             int[] newIndices = new int[count];
 
-            for (int i = count - 1 ; i >= 0 ; i--)
+            // Move each selection down
+            for (int i = count - 1; i >= 0; i--)
             {
                 int x = indices[i];
                 Manager.MoveItemForward(x);
@@ -219,18 +215,20 @@ namespace MyAlbumEditor
 
             string msg;
             if (count == 1)
-                msg = "Do you really want to remove selected photograph?";
+                msg = "Do you really want to remove the selected photograph?";
             else
-                msg = string.Format("Do you really want to remove the {0} selected photograph?", count);
-            
+                msg = String.Format("Do you really want to remove the {0} selected photographs?", count);
+
             DialogResult result = MessageBox.Show(msg, "Remove Photos?",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question,
                                                   MessageBoxDefaultButton.Button2);
+
             if (result == DialogResult.Yes)
             {
                 for (int i = count - 1; i >= 0; i--)
                     Manager.Album.RemoveAt(indices[i]);
+
                 DisplayAlbum();
             }
         }
@@ -239,9 +237,11 @@ namespace MyAlbumEditor
         {
             string path = cmbAlbums.Text;
 
+            // Don't reopen the existing album
             if (Manager != null && path == Manager.FullName)
                 return;
 
+            // Open the new album
             OpenAlbum(path);
         }
 
@@ -255,7 +255,7 @@ namespace MyAlbumEditor
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     if (CloseAlbum())
-                        return;
+                        return; // cancel browse
 
                     cmbAlbums.Text = null;
                     cmbAlbums.DataSource = Directory.GetFiles(dlg.SelectedPath, "*.abm");
@@ -263,6 +263,79 @@ namespace MyAlbumEditor
                     OpenAlbum(cmbAlbums.Text);
                 }
             }
+        }
+
+        private void lstPhotos_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            Photograph p = Manager.Album[e.Index];
+            Rectangle scaledRect = ImageUtility.ScaleToFit(p.Image, DrawRect);
+
+            Font f = lstPhotos.Font;
+            string text = lstPhotos.GetItemText(p);
+            int textWith = (int)e.Graphics.MeasureString(text, f).Width;
+
+            e.ItemWidth = scaledRect.Width + textWith + 2;
+            e.ItemHeight = Math.Max(scaledRect.Height, f.Height) + 2;
+
+        }
+
+        private void lstPhotos_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            if (e.Index < 0 || e.Index > Manager.Album.Count - 1)
+                return;
+            Photograph p = Manager.Album[e.Index];
+
+            Rectangle imageRect = ImageUtility.ScaleToFit(p.Image, DrawRect);
+            imageRect.X = e.Bounds.X + 2;
+            imageRect.Y = e.Bounds.Y + 1;
+
+            g.DrawImage(p.Image, imageRect);
+            g.DrawRectangle(Pens.Black, imageRect);
+            p.ReleaseImage();
+
+            Rectangle textRect = new Rectangle();
+            textRect.X = imageRect.Right + 2;
+            textRect.Y = imageRect.Y + ((imageRect.Height - e.Font.Height) / 2);
+            textRect.Width = e.Bounds.Width - imageRect.Width - 4;
+            textRect.Height = e.Font.Height;
+
+            Brush textBrush;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                g.FillRectangle(SystemBrushes.Highlight, textRect);
+                textBrush = SystemBrushes.HighlightText;
+            }
+            else
+            {
+                g.FillRectangle(SystemBrushes.Window, textRect);
+                textBrush = SystemBrushes.WindowText;
+            }
+
+            g.DrawString(lstPhotos.GetItemText(p), e.Font, textBrush, textRect);
+        }
+
+        private void tcPhotos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateTabs();
+        }
+
+        private void UpdateTabs()
+        {
+            bool nullManager = (Manager == null);
+            if (nullManager)
+                Text = " Selected album could not be opened";
+            else
+                Text = "album" + Manager.ShortName;
+            btnAlbumProps.Enabled = !nullManager;
+            tcPhotos.Enabled = !nullManager;
+
+            if (tcPhotos.SelectedTab == pagePhotos)
+                DisplayAlbum();
+            else if (tcPhotos.SelectedTab == pageDates)
+                albCalendar.Manager = Manager;
+            else if (tcPhotos.SelectedTab == pageImages)
+                albumImages.Manager = Manager;
         }
     }
 }

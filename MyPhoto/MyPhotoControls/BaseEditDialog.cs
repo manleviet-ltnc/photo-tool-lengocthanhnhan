@@ -18,13 +18,12 @@ namespace Manning.MyPhotoControls
 
         protected virtual void ResetDialog()
         {
-
+            // Does nothing in base class
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
             ResetDialog();
         }
-         
     }
 }

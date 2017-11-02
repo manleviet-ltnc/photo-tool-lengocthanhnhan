@@ -11,7 +11,6 @@ namespace Manning.MyPhotoControls
 {
     public partial class PhotoEditDialog : Manning.MyPhotoControls.BaseEditDialog
     {
-
         private Photograph _photo;
         private Photograph Photo
         {
@@ -24,26 +23,26 @@ namespace Manning.MyPhotoControls
             get { return _manager; }
         }
 
+
         protected PhotoEditDialog()
         {
             InitializeComponent();
         }
 
-        public PhotoEditDialog(Photograph photo)
-            : this()
+        public PhotoEditDialog(Photograph photo) : this()
         {
             if (photo == null)
                 throw new ArgumentNullException("The photo parameter cannot be null");
             InitializeDialog(photo);
         }
 
-        public PhotoEditDialog(AlbumManager mgr)
-            : this()
+        public PhotoEditDialog(AlbumManager mgr) : this()
         {
             if (mgr == null)
                 throw new ArgumentNullException("The mgr parameter cannot be null");
+
             _manager = mgr;
-            InitializeDialog(mgr.current);
+            InitializeDialog(mgr.Current);
         }
 
         private void InitializeDialog(Photograph photo)
@@ -69,10 +68,10 @@ namespace Manning.MyPhotoControls
         protected override void OnClosing(CancelEventArgs e)
         {
             if (DialogResult == DialogResult.OK)
-                SaveSetting();
+                SaveSettings();
         }
 
-        private void SaveSetting()
+        private void SaveSettings()
         {
             Photograph photo = Photo;
             if (photo != null)
@@ -88,16 +87,6 @@ namespace Manning.MyPhotoControls
             }
         }
 
-        private void txtCaption_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char c = e.KeyChar;
-
-            e.Handled = !(char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || char.IsControl(c));
-
-            if (e.Handled)
-                Console.Beep();
-        }
-
         private void txtCaption_TextChanged(object sender, EventArgs e)
         {
             Text = txtCaption.Text + " - Properties";
@@ -109,7 +98,8 @@ namespace Manning.MyPhotoControls
             {
                 DateTime result = DateTime.Parse(input);
                 if (result > DateTime.Now)
-                    throw new FormatException(" The given date is in the future.");
+                    throw new FormatException("The given date is in the future.");
+
                 return result;
             }
         }
@@ -119,19 +109,13 @@ namespace Manning.MyPhotoControls
             if (!e.IsValidInput)
             {
                 DialogResult result = MessageBox.Show("The Date Taken entry is invalid or "
-                                                        + "in the future and may be ignored."
-                                                        + "Do you wish to correct this ?",
-                                                        "photo properties",
-                                                        MessageBoxButtons.YesNo,
-                                                        MessageBoxIcon.Question);
+                                                      + "in the future and may be ignored."
+                                                      + " Do you wish to correct this?",
+                                                      "Photo Properties",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
                 e.Cancel = (result == DialogResult.Yes);
             }
         }
-
-        private void PhotoEditDialog_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-        

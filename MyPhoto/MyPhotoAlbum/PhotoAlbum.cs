@@ -8,17 +8,19 @@ using System.Threading.Tasks;
 namespace Manning.MyPhotoAlbum
 {
     public class PhotoAlbum : Collection<Photograph>, IDisposable
+    
     {
-        public enum DescriptorOption { FileName, Caption, DateTaken }
+
+        public enum DescriptorOption {  FileName, Caption, DateTaken }
 
         private string _title;
         public string Title
         {
-            get { return _title; }
+            get { return _title;  }
             set
             {
                 _title = value;
-                HasChange = true;
+                HasChanged = true;
             }
         }
 
@@ -29,30 +31,29 @@ namespace Manning.MyPhotoAlbum
             set
             {
                 _descriptor = value;
-                HasChange = true;
+                HasChanged = true;
             }
         }
 
        
-
-        private bool _hasChange = false;
-        public bool HasChange
+        private bool _hasChanged = false;
+        public bool HasChanged
         {
             get
             {
-                if(_hasChange) return true;
-
-                foreach(Photograph p in this)
-                    if(p.HasChanged) return true;
+                if (_hasChanged) return true;
+                foreach (Photograph p in this)
+                    if (p.HasChanged) return true;
 
                 return false;
+            
             }
             set
             {
-                _hasChange=value;
-                if(value==false)
-                    foreach(Photograph p in this)
-                        p.HasChanged=false;
+                _hasChanged = value;
+                if (value == false)
+                    foreach (Photograph p in this)
+                        p.HasChanged = false;
             }
         }
 
@@ -60,7 +61,6 @@ namespace Manning.MyPhotoAlbum
         {
             ClearSettings();
         }
-
         public Photograph Add(string filename)
         {
             Photograph p = new Photograph(filename);
@@ -73,35 +73,34 @@ namespace Manning.MyPhotoAlbum
             _title = null;
             _descriptor = DescriptorOption.Caption;
         }
-
-
         protected override void ClearItems()
         {
             if (Count > 0)
             {
                 Dispose();
                 base.ClearItems();
-                HasChange = true;
+                HasChanged = true;
             }
         }
 
         protected override void InsertItem(int index, Photograph item)
         {
             base.InsertItem(index, item);
-            HasChange = true;
+            HasChanged = true;
         }
 
         protected override void RemoveItem(int index)
         {
             Items[index].Dispose();
             base.RemoveItem(index);
-            HasChange = true;
+            HasChanged = true;
         }
 
         protected override void SetItem(int index, Photograph item)
         {
             base.SetItem(index, item);
-            HasChange = true;
+            HasChanged = true;
+
         }
 
         public void Dispose()
@@ -122,6 +121,7 @@ namespace Manning.MyPhotoAlbum
                 case DescriptorOption.FileName:
                     return photo.FileName;
             }
+
             throw new ArgumentException("Unrecognized photo descriptor option.");
         }
 
@@ -129,6 +129,5 @@ namespace Manning.MyPhotoAlbum
         {
             return GetDescription(this[index]);
         }
-
     }
 }

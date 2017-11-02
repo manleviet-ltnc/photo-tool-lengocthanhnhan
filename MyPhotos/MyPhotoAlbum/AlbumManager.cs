@@ -38,16 +38,15 @@ namespace Manning.MyPhotoAlbum
                     _photographers = new StringCollection();
                     foreach (Photograph p in Album)
                     {
+                        // Make sure we add each person only once
                         string person = p.Photographer;
                         if (person != null && person.Length > 0
                             && !_photographers.Contains(person))
-                        {
                             _photographers.Add(person);
-                        }
                     }
                 }
-                    return _photographers;
-           }
+                return _photographers;
+            }
         }
 
         static AlbumManager()
@@ -119,8 +118,6 @@ namespace Manning.MyPhotoAlbum
             get { return _album; }
         }
 
-        
-
         public Photograph Current
         {
             get
@@ -187,6 +184,7 @@ namespace Manning.MyPhotoAlbum
             if (index <= 0 || index >= Album.Count)
                 throw new IndexOutOfRangeException();
 
+            // Remove photo and reinsert at prior position
             Photograph photo = Album[index];
             Album.RemoveAt(index);
             Album.Insert(index - 1, photo);
@@ -197,6 +195,7 @@ namespace Manning.MyPhotoAlbum
             if (index < 0 || index > Album.Count - 1)
                 throw new IndexOutOfRangeException();
 
+            // Remove photo and reinsert at subsequent position
             Photograph photo = Album[index];
             Album.RemoveAt(index);
             Album.Insert(index + 1, photo);

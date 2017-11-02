@@ -12,8 +12,8 @@ namespace Manning.MyPhotoControls
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Open Album";
-                dlg.Filter = "Album files (*.abm)|*.abm"
-                             + "|All files (*.*)|*.*";
+                dlg.Filter = "Album files (*.abm)|*.abm|"
+                             + "All files (*.*)|*.*";
                 dlg.InitialDirectory = AlbumManager.DefaultPath;
                 dlg.RestoreDirectory = true;
 
@@ -23,6 +23,7 @@ namespace Manning.MyPhotoControls
                     return CheckAlbumPassword(path, ref password);
                 }
             }
+
             return false;
         }
 
@@ -49,8 +50,8 @@ namespace Manning.MyPhotoControls
             {
                 dlg.Title = "Save Album";
                 dlg.DefaultExt = "abm";
-                dlg.Filter = "Album files (*.abm)|*.abm"
-                             + "|All files (*.*)|*.*";
+                dlg.Filter = "Album files (*.abm)|*.abm|"
+                             + "All files|*.*";
                 dlg.InitialDirectory = AlbumManager.DefaultPath;
                 dlg.RestoreDirectory = true;
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -67,17 +68,18 @@ namespace Manning.MyPhotoControls
             if (manager.Album.HasChanged)
             {
                 string msg;
-                if (string.IsNullOrEmpty(manager.FullName))
+                if (manager.FullName == null)
                     msg = "Do you wish to save your changes?";
                 else
-                    msg = String.Format("Do you wish to save your changes to \n{0}?", manager.ShortName);
-
+                    msg = String.Format("Do you wish to save your changes to \n{0} ", manager.ShortName);
+                
                 DialogResult result = MessageBox.Show(msg, "Save Changes?",
-                                                      MessageBoxButtons.YesNoCancel,
-                                                      MessageBoxIcon.Question);
+                                                       MessageBoxButtons.YesNoCancel,
+                                                       MessageBoxIcon.Question);
                 return result;
             }
             return DialogResult.No;
         }
+
     }
 }

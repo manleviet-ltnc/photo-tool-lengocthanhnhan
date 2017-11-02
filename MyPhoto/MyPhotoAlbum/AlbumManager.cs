@@ -13,8 +13,8 @@ namespace Manning.MyPhotoAlbum
         static private string _defaultPath;
         static public string DefaultPath
         {
-            get{return _defaultPath;}
-            set{_defaultPath=value;}
+            get { return _defaultPath; }
+            set { _defaultPath = value; }
         }
 
         private string _pwd;
@@ -26,10 +26,9 @@ namespace Manning.MyPhotoAlbum
                 _pwd = value;
             }
         }
-
         static AlbumManager()
         {
-            _defaultPath=Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Albums";
+            _defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Albums";
         }
 
         public AlbumManager(string name, string pwd) : this()
@@ -41,36 +40,36 @@ namespace Manning.MyPhotoAlbum
                 Index = 0;
         }
 
-        private int _pos=-1;
+        private int _pos = -1;
         public int Index
         {
             get
             {
-                int count=Album.Count;
-                if(_pos>=count)
-                    _pos=count-1;
+                int count = Album.Count;
+                if (_pos >= count)
+                    _pos = count - 1;
                 return _pos;
             }
             set
             {
-                if(value<0||value>=Album.Count)
+                if (value < 0 || value >= Album.Count)
                     throw new IndexOutOfRangeException("The given index is out of bounds");
-                _pos=value;
+                _pos = value;
             }
         }
-        private string _name=string.Empty;
+        private string _name = String.Empty;
         public string FullName
         {
-            get{return _name;}
-            private set{_name=value;}
+            get { return _name; }
+            private set { _name = value; }
         }
 
         public string ShortName
         {
             get
             {
-                if(string.IsNullOrEmpty(FullName))
-                   return null;
+                if (string.IsNullOrEmpty(FullName))
+                    return null;
                 else
                     return Path.GetFileNameWithoutExtension(FullName);
             }
@@ -79,28 +78,27 @@ namespace Manning.MyPhotoAlbum
         private PhotoAlbum _album;
         public PhotoAlbum Album
         {
-            get{ return _album ;}
+            get { return _album; }
         }
-
-        public  AlbumManager()
+        public AlbumManager()
         {
-            _album= new PhotoAlbum();
+            _album = new PhotoAlbum();
         }
 
-        public AlbumManager(String name) : this()
+        public AlbumManager(string name) : this()
         {
-            _name=name;
-            _album= AlbumStorage.ReadAlbum(name);
-            if(Album.Count>0)
-                Index=0;
+            _name = name;
+            _album = AlbumStorage.ReadAlbum(name);
+            if (Album.Count > 0)
+                Index = 0;
         }
 
-        public Photograph current
+        public Photograph Current
         {
             get
             {
-                if(Index<0||Index >= Album.Count)
-                   return null;
+                if (Index < 0 || Index >= Album.Count)
+                    return null;
                 return Album[_pos];
             }
         }
@@ -109,9 +107,9 @@ namespace Manning.MyPhotoAlbum
         {
             get
             {
-                if(current==null)
+                if (Current == null)
                     return null;
-                return current.Image;
+                return Current.Image;
             }
         }
 
@@ -122,38 +120,38 @@ namespace Manning.MyPhotoAlbum
 
         public void Save()
         {
-            if(FullName==null)
-               throw new InvalidOperationException("Unable to save album with no name");
-            AlbumStorage.WriteAlbum( Album, FullName,Password);
+            if (FullName == null)
+                throw new InvalidOperationException("Unable to save album with no name");
+            AlbumStorage.WriteAlbum(Album, FullName, Password);
         }
 
         public void Save(string name, bool overwrite)
         {
-            if(name==null)
+            if (name == null)
                 throw new ArgumentNullException("name");
-            if(name!=FullName&&AlbumExits(name)&&!overwrite)
+            if (name != FullName && AlbumExits(name) && !overwrite)
                 throw new ArgumentException("An album with this name exists");
 
-            AlbumStorage.WriteAlbum(Album,name,Password);
-            FullName=name;
+            AlbumStorage.WriteAlbum(Album, name, Password);
+            FullName = name;
         }
 
         public bool MoveNext()
         {
-            if(Index>=Album.Count)
+            if (Index >= Album.Count)
                 return false;
+
             Index++;
             return true;
         }
 
-        public bool MovePev()
+        public bool MovePrev()
         {
-            if(Index<=0)
+            if (Index <= 0)
                 return false;
+
             Index--;
             return true;
         }
-
-
     }
 }

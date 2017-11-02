@@ -2,9 +2,10 @@
 using System.IO;
 using System.Text;
 
+
 namespace Manning.MyPhotoAlbum
 {
-    class CryptoWriter: StreamWriter
+    class CryptoWriter : StreamWriter
     {
         private CryptoTextBase _base;
         private CryptoTextBase CryptoBase
@@ -12,7 +13,7 @@ namespace Manning.MyPhotoAlbum
             get { return _base; }
         }
 
-        public CryptoWriter(string path, string password): base(path)
+        public CryptoWriter(string path, string password) : base(path)
         {
             if (path == null || path.Length == 0)
                 throw new ArgumentNullException("path");
